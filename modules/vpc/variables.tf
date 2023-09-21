@@ -23,3 +23,12 @@ variable "availability_zones" {
   description = "List of Availability Zones for subnets"
   type        = list(string)
 }
+
+variable "create_eip" {
+  description = "variable for EIP"
+  default = false
+}
+variable "create_nat" {
+  description = "variable for NAT"
+  default = false
+}
