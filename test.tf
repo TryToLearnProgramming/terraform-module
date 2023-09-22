@@ -34,13 +34,12 @@ module "creae_rds" {
   db_name        = "tedtdb"
   engine         = "mysql"
   engine_version = "8.0"
-  instance_class = "db.t3a.micro"
+  instance_class = "db.t3.micro"
   username       = "admin"
-  password       = "password@123"
+  password       = "passwordRg123"
   vpc_id         = module.create_vpc.vpc_id
   subnet_ids     = module.create_vpc.private_subnet_ids
   sg_cidr_blocks = local.cidr_block
-
   depends_on = [module.create_vpc]
 }
 

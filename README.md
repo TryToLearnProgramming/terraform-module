@@ -37,6 +37,4 @@
   vpc_id         = module.create_vpc.vpc_id
   subnet_ids     = module.create_vpc.private_subnet_ids
   sg_cidr_blocks = local.cidr_block
-
-  depends_on = [module.create_vpc]
 ```

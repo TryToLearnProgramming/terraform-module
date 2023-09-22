@@ -24,7 +24,6 @@ resource "aws_db_instance" "this" {
   identifier           = var.name
   db_subnet_group_name = aws_db_subnet_group.subnet_group.name
   storage_encrypted           = true
-  multi_az = var.multi_az
   vpc_security_group_ids = [aws_security_group.this.id]
 
   depends_on = [ 
