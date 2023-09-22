@@ -26,5 +26,17 @@
 
 ## RDS Module parameters**
 ```python
+# other resources have to created saperetely
+  name           = "use small letters and avoid - "
+  db_name        = "use small letters and avoid - "
+  engine         = "mysql"
+  engine_version = "8.0"
+  instance_class = "db.t3a.micro"
+  username       = "admin"
+  password       = "password@123"
+  vpc_id         = module.create_vpc.vpc_id
+  subnet_ids     = module.create_vpc.private_subnet_ids
+  sg_cidr_blocks = local.cidr_block
 
+  depends_on = [module.create_vpc]
 ```

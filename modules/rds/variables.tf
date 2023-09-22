@@ -2,6 +2,11 @@ variable "name" {
   description = "Name of the RDS"
   type = string
 }
+
+variable "multi_az" {
+  description = "Name of Database"
+  default = true
+}
 variable "db_name" {
   description = "Name of Database"
   type = string
