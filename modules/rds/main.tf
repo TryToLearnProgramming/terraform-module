@@ -22,11 +22,11 @@ resource "aws_db_instance" "this" {
   parameter_group_name = aws_db_parameter_group.parameter_group.name
   skip_final_snapshot  = true
   identifier           = var.name
-  db_subnet_group_name = aws_db_subnet_group.subnet_group[0].name
+  db_subnet_group_name = aws_db_subnet_group.subnet_group.name
   storage_encrypted           = true
   multi_az = var.multi_az
   vpc_security_group_ids = [aws_security_group.this.id]
-  
+
   depends_on = [ 
     aws_db_parameter_group.parameter_group, 
     aws_db_subnet_group.subnet_group, 
@@ -51,12 +51,12 @@ resource "aws_db_parameter_group" "parameter_group" {
 ######################### Subnet Group #########################
 resource "aws_db_subnet_group" "subnet_group" {
   name       = "${var.name}-subnet-group"
-  count = length(var.subnet_ids)
-  subnet_ids = [var.subnet_ids[count.index]]
-
-  tags = {
-    Name = "${var.name}-subnet-group"
-  }
+  # count = length(var.subnet_ids)
+  subnet_ids = var.subnet_ids
+  
+  # tags = {
+  #   Name = "${var.name}-subnet-group"
+  # }
 }
 
 ######################### Security Group #########################
