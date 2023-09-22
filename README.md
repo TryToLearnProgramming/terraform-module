@@ -12,3 +12,19 @@
   create_eip = true/false   # If want a EIP for NAT
   create_nat = true/false   # If want a NAT
 ```
+## S3 Module parameters**
+```python
+# other resources have to created saperetely
+  bucket_name = "enter a unique name"
+  ############## Enable for public access ##############
+  acl = "default value private" / "public-read" 
+  block_public_acls = "default value true"
+  block_public_policy = "default value true"
+  ignore_public_acls = "default value true"
+  restrict_public_buckets = "default value true"
+```
+
+## RDS Module parameters**
+```python
+
+```

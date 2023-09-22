@@ -12,3 +12,32 @@ module "create_vpc" {
   # create_eip = true   # If want a EIP for NAT
   # create_nat = true   # If want a NAT
 }
+
+# module "create_s3" {
+#   source      = "./modules/s3"
+#   bucket_name = "test-bucket-816"
+#   ############## Enable for public acces ##############
+#   # acl = "public-read"
+#   # block_public_acls = false
+#   # block_public_policy = false
+#   # ignore_public_acls = false
+#   # restrict_public_buckets = false
+# }
+
+module "creae_rds" {
+  source = "./modules/rds"
+  name = "test_rds"
+  db_name = "tedtdb"
+  engine = "mysql"
+  engine_version = "8.0"
+  instance_class = "db.t3a.micro"
+  username = "admin"
+  password = "password@123"
+  vpc_id = module.create_vpc.vpc_id
+  subnet_ids = ["sn-65bh769g","sn-65bh569g"]#module.create_vpc.private_subnet_ids
+  sg_cidr_blocks = "${module.create_vpc.vpc_id.cidr_block}"
+}
+
+# output "pr_subnet_ids" {
+#   value = module.create_vpc.private_subnet_ids
+# }
